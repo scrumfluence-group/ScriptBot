@@ -1,7 +1,7 @@
 {
-    "name": "Step Recorder",
+    "name": "ScriptBot",
     "version": "1.0",
-    "description": "Build an Extension!",
+    "description": "Record automation scripts directly from the browser.",
     "manifest_version": 2,
     "permissions": [
         "activeTab",

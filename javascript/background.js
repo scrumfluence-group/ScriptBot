@@ -2,18 +2,15 @@
 let contextMenus = {};
 
 contextMenus.getElementLocators =
-    chrome.contextMenus.create(
-        {
-            title: 'Analyze DOM For Element IDs',
-            contexts: ['all']
-        },
-        () => {
+    chrome.contextMenus.create({
+        title: 'Analyze DOM For Element IDs',
+        contexts: ['all']
+    }, () => {
 
-            if (chrome.runtime.lastError) {
-                console.error(chrome.runtime.lastError.message);
-            }
+        if (chrome.runtime.lastError) {
+            console.error(chrome.runtime.lastError.message);
         }
-    );
+    });
 
 function createContextMenuHandler(info, tab) {
 
@@ -32,8 +29,6 @@ chrome.runtime.onConnect.addListener(function (externalPort) {
 
     console.log("(x) - Popup has been closed.");
 });
-
-//----------------------------------------------------------------------
 
 chrome.runtime.onConnect.addListener((port) => {
 

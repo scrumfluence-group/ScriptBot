@@ -1,30 +1,27 @@
 
-document.getElementById("credits-toggle").addEventListener("click", toggleCredits);
+document.getElementById('credits-toggle').addEventListener('click', toggleCredits);
 
 function toggleCredits() {
 
     let credits = document.getElementById('credits');
-    switchClasses(credits, "hide", "show");
+    switchClasses(credits, 'hide', 'show');
 }
 
 function toggleStartPauseButton() {
 
     let startRecord = document.getElementById('start-record');
-    switchClasses(startRecord, "hide", "show");
+    switchClasses(startRecord, 'hide', 'show');
 
     let pauseRecord = document.getElementById('pause-record');
-    switchClasses(pauseRecord, "hide", "show");
+    switchClasses(pauseRecord, 'hide', 'show');
 }
 
 function switchClasses(element, class1, class2) {
 
     if (element.classList.contains(class1)) {
-
         element.classList.remove(class1);
         element.classList.add(class2);
-
     } else {
-
         element.classList.remove(class2);
         element.classList.add(class1);
     }
@@ -37,25 +34,25 @@ port.onMessage.addListener((message, sender) => {
     console.log(message.status);
 });
 
-document.getElementById("start-page-analysis").addEventListener("click", () => {
-    port.postMessage({ action: "start-page-analysis" });
+document.getElementById('start-page-analysis').addEventListener('click', () => {
+    port.postMessage({ action: 'start-page-analysis' });
 });
 
-document.getElementById("start-record").addEventListener("click", () => {
+document.getElementById('start-record').addEventListener('click', () => {
 
-    let file_name = data.length > 0 ? data : 'script ' + getDateTimeStamp();
-    data = '';
+    let file_name = name.length > 0 ? name : 'script ' + getDateTimeStamp();
+    name = '';
 
     port.postMessage({
-        action: "start-record",
-        file_name: file_name,
-        value: '',
+        action: 'start-record',
+        file_name: file_name + '.json',
+        status: true
     });
 });
 
-document.getElementById("stop-record").addEventListener("click", () => {
+document.getElementById('stop-record').addEventListener('click', () => {
 
-    port.postMessage({ action: "stop-record" });
+    port.postMessage({ action: 'stop-record' });
 
     chrome.storage.local.get(null, (result) => {
 
@@ -85,19 +82,19 @@ document.getElementById("stop-record").addEventListener("click", () => {
 
 //-------------------------------------
 
-document.getElementById("wait-for-element").addEventListener("click", () => {
+document.getElementById('wait-for-element').addEventListener('click', () => {
     postEventMessage('wait-for-element', false, true);
 });
 
-document.getElementById("match-element-text").addEventListener("click", () => {
+document.getElementById('match-element-text').addEventListener('click', () => {
     postEventMessage('match-element-text', true, false);
 });
 
-document.getElementById("wait").addEventListener("click", () => {
+document.getElementById('wait').addEventListener('click', () => {
     postEventMessage('wait', false, true);
 });
 
-document.getElementById("remove-last-step").addEventListener("click", () => {
+document.getElementById('remove-last-step').addEventListener('click', () => {
     postEventMessage('remove-last-step', false, false);
 });
 
@@ -106,22 +103,22 @@ document.getElementById("remove-last-step").addEventListener("click", () => {
 let data = '';
 let name = '';
 
-document.getElementById("data").addEventListener("change", (element) => {
+document.getElementById('data').addEventListener('change', (element) => {
     data = element.target.value;
 });
 
-document.getElementById("name").addEventListener("change", (element) => {
+document.getElementById('name').addEventListener('change', (element) => {
     name = element.target.value;
 });
 
-document.getElementById("use-element-name").addEventListener("click", () => {
+document.getElementById('use-element-name').addEventListener('click', () => {
     postEventMessage('use-element-name', false, false);
 });
 
 //-------------------------------------
 
-document.getElementById("author").addEventListener("click", () => {
-    chrome.tabs.create({ url: document.getElementById("author").getAttribute('href') });
+document.getElementById('author').addEventListener('click', () => {
+    chrome.tabs.create({ url: document.getElementById('author').getAttribute('href') });
 });
 
 //-------------------------------------

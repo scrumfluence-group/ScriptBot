@@ -1,7 +1,6 @@
 
 const elements = document.body.getElementsByTagName("*");
-
-let dash = '-';
+const dash = '-';
 let elementsWithId = 0;
 let elementsWithoutId = 0;
 
